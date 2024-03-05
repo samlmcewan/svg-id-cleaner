@@ -1,11 +1,23 @@
 {
   "name": "svg-cleaner",
   "displayName": "SVG ID Cleaner",
+  "author": "Sam Lewis Mcewan",
   "description": "Assigns unique IDs to SVG elements and their children, preventing HTML validation errors",
+  "keywords": [
+    "svg",
+    "unique-id",
+    "validation"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samlmcewan/svg-id-cleaner"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.87.0"
   },
+  
   "categories": [
     "Other"
   ],
