@@ -51,26 +51,37 @@ export function activate(context: vscode.ExtensionContext) {
 			return prefix + randomString;
 		  }
 	
-		  // Use a regular expression to find SVG elements
-		  const svgRegex = /<svg(\s+[^>]*?)>/g;
-		  const matches = text.match(svgRegex);
-	
-		  if (!matches) {
-			vscode.window.showInformationMessage('No SVG elements found');
-			return;
-		  }
-	
-		  const updatedText = text.replace(svgRegex, (match, attributes) => {
-			const id = generateUniqueID();
-			return `<svg id="${id}" ${attributes}>`; // Add unique ID to opening tag
-		  });
-	
-		  // Update the document with unique IDs
-		  editor.edit(editBuilder => {
+		 // Use a regular expression to find SVG elements and replace IDs
+		const updatedText = text.replace(/<svg(\s+[^>]*?)>/g, (match, attributes) => {
+			// Check for existing id attribute using regex
+			const existingIdMatch = attributes.match(/id="([^"]*)"/);
+			let id;
+
+			if (existingIdMatch) {
+			// Use existing ID if unique (within the current replacement)
+			const existingId = existingIdMatch[1];
+			// Check if the existing ID appears elsewhere in the updated text (using negative lookahead)
+			if (!text.match(new RegExp(`<svg[^>]*?id="${existingId}"(?<!${existingId})`, 'g'))) {
+				id = existingId; // Unique within current replacement
+			} else {
+				// If existing ID is not unique, generate a new one
+				id = generateUniqueID();
+			}
+			} else {
+			// If no existing ID, generate a new one
+			id = generateUniqueID();
+			}
+
+			// Replace opening tag with new ID, removing existing id attribute
+			return `<svg id="${id}" ${attributes.replace(/id="[^"]*"/, "")}>`;
+		});
+
+		// Update the document with unique IDs
+		editor.edit(editBuilder => {
 			editBuilder.replace(new vscode.Range(document.positionAt(0), document.positionAt(text.length)), updatedText);
-		  });
-	
-		  vscode.window.showInformationMessage('Unique IDs assigned to SVG elements and their children');
+		});
+
+		vscode.window.showInformationMessage('Unique IDs assigned to SVG elements');
 		});
 	
 		context.subscriptions.push(assignUniqueIdsCommand);

@@ -18,7 +18,7 @@
         "title": "Hello World"
       },
       {
-        "command": "svg-cleaner.cleanSVGIDs",
+        "command": "svg-cleaner.cleanSVGIds",
         "title": "Clean SVG IDs"
       }
     ]
