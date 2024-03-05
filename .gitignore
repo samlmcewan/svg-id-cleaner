@@ -1,0 +1,58 @@
+out
+dist
+node_modules
+.vscode-test/
+*.vsix
+
+# Node.js
+node_modules/
+npm-shrinkwrap.json
+yarn.lock
+
+# Build artifacts
+build/
+dist/
+.build/
+
+# Editor temporary/cache files
+.vscode/
+.idea/
+
+# Version control systems
+.git/
+.svn/
+CVS/
+.hg/
+_darcs/
+
+# Specific file types
+*.log
+*.pid
+*.lock
+*.tmp
+*.sock
+*~
+*.db
+*.sql
+*.sqlite
+
+# DS_Store file on macOS
+.DS_Store
+
+# IDE-specific temporary files
+*.swo
+
+# OS-specific files
+# (Adjust if needed based on your development environment)
+Thumbs.db # Windows
+
+# Testing and debugging files
+.env.local
+.env.test
+
+# VS Code extension packaging
+.vscode-extension.json
+**/*.vsix
+
+# Dependency manifest files
+package-lock.json
