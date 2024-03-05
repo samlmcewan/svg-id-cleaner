@@ -42,14 +42,24 @@ export function activate(context: vscode.ExtensionContext) {
 		  let uniqueIdCounter = 0;
 	
 		  // Function to generate unique IDs
-		  function generateUniqueID(): string {
-			const prefix = `svg-id-${uniqueIdCounter++}-${Date.now().toString(36)}`;
-			let randomString = '';
-			for (let i = 0; i < 5; i++) {
-			  randomString += Math.random().toString(36).substring(2); // Use random part of base 36 conversion
+		//   function generateUniqueID(): string {
+		// 	const prefix = `svg-id-${uniqueIdCounter++}-${Date.now().toString(36)}`;
+		// 	let randomString = '';
+		// 	for (let i = 0; i < 5; i++) {
+		// 	  randomString += Math.random().toString(36).substring(2); // Use random part of base 36 conversion
+		// 	}
+		// 	return prefix + randomString;
+		//   }
+
+		    // Function to generate unique IDs with alphanumeric characters (base 36)
+			function generateUniqueID(): string {
+				const prefix = `svg-id-${uniqueIdCounter++}-`;
+				let randomString = ''; // Declare randomString as an empty string
+				for (let i = 0; i < 5; i++) {
+				randomString += Math.floor(Math.random() * 36).toString(36); // Use random integer and convert to base 36
+				}
+				return prefix + randomString;
 			}
-			return prefix + randomString;
-		  }
 	
 		 // Use a regular expression to find SVG elements and replace IDs
 		const updatedText = text.replace(/<svg(\s+[^>]*?)>/g, (match, attributes) => {
