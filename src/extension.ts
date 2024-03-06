@@ -61,9 +61,11 @@ export function activate(context: vscode.ExtensionContext) {
                     // Generate a unique ID for each nested element
                     const newId = generateUniqueID();
                     return subMatch.replace(id, newId);
+					
                 });
                 // Replace opening tag with new ID, removing existing id attribute
-                return `<svg id="${svgId}" ${attributes.replace(/id="[^"]*"/, "")}>${updatedContent}</svg>`;
+                return `<svg id="${svgId}" ${attributes.replace(/id="[^"]*"/, "").trim()}>${updatedContent}</svg>`;
+
             });
 
             // Update the document with unique IDs
