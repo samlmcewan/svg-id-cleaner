@@ -1,7 +1,7 @@
 {
   "name": "svg-cleaner",
   "displayName": "SVG ID Cleaner",
-  "author": "Sam Lewis Mcewan",
+  "author": "Sam Lewis McEwan",
   "description": "Assigns unique IDs to SVG elements and their children, preventing HTML validation errors",
   "keywords": [
     "svg",
@@ -17,11 +17,15 @@
   "engines": {
     "vscode": "^1.87.0"
   },
-  
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:svg-cleaner.helloWorld",
+    "onCommand:svg-cleaner.cleanSVGIds",
+    "onLanguage:html",
+    "onWorkspaceOpen"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -33,7 +37,25 @@
         "command": "svg-cleaner.cleanSVGIds",
         "title": "Clean SVG IDs"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "svg-cleaner.cleanSVGIds",
+          "when": "resourceLangId == html",
+          "group": "modification"
+        }
+      ],
+      "statusBarItem": [
+        {
+          "id": "svg-cleaner.cleanSVGIds",
+          "name": "$(zap) Clean SVG IDs",
+          "alignment": "left",
+          "priority": 9000,
+          "submenu": ""
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
