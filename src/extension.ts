@@ -6,14 +6,14 @@ import * as vscode from 'vscode';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	 // Create a status bar item (button)
-	 const statusBarButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-	 statusBarButton.text = "$(zap) Clean SVG IDs";
-	 statusBarButton.tooltip = "Click to clean SVG IDs";
-	 statusBarButton.command = 'svg-cleaner.cleanSVGIds';
- 
-	 // Add the button to the status bar
-	 statusBarButton.show();
+    // Create a status bar item (button)
+    const statusBarButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+    statusBarButton.text = "$(zap) Clean SVG IDs";
+    statusBarButton.tooltip = "Click to clean SVG IDs";
+    statusBarButton.command = 'svg-cleaner.cleanSVGIds';
+
+    // Add the button to the status bar
+    statusBarButton.show();
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
@@ -29,17 +29,9 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(disposable);
+
     try {
-
         const assignUniqueIdsCommand = vscode.commands.registerCommand('svg-cleaner.cleanSVGIds', () => {
-
-            let confirm = vscode.commands.registerCommand('svg-cleaner.confirm', () => {
-
-                vscode.window.showInformationMessage('Command "cleanSVGIds" invoked!');
-            });
-
-            context.subscriptions.push(confirm);
-
             const editor = vscode.window.activeTextEditor;
             if (!editor || editor.document.languageId !== 'html') {
                 return; // Only run in HTML files
