@@ -8,7 +8,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Create a status bar item (button)
     const statusBarButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-    statusBarButton.text = "$(zap) Clean SVG IDs";
+    statusBarButton.text = "$(sparkle) Clean SVG IDs";
     statusBarButton.tooltip = "Click to clean SVG IDs";
     statusBarButton.command = 'svg-cleaner.cleanSVGIds';
 

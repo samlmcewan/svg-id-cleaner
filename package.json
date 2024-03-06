@@ -49,7 +49,7 @@
       "statusBarItem": [
         {
           "id": "svg-cleaner.cleanSVGIds",
-          "name": "$(north-star) Clean SVG IDs",
+          "name": "$(sparkle) Clean SVG IDs",
           "alignment": "left",
           "priority": 1000,
           "submenu": ""
