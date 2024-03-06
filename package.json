@@ -51,7 +51,7 @@
           "id": "svg-cleaner.cleanSVGIds",
           "name": "$(zap) Clean SVG IDs",
           "alignment": "left",
-          "priority": 9000,
+          "priority": 1000,
           "submenu": ""
         }
       ]
