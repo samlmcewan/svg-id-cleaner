@@ -1,12 +1,17 @@
 {
-  "name": "svg-cleaner",
+  "name": "svg-id-cleaner",
   "displayName": "SVG ID Cleaner",
   "author": "Sam Lewis McEwan",
-  "description": "Assigns unique IDs to SVG elements and their children, preventing HTML validation errors",
+  "description": "Replaces existing IDs with unique IDs in <svg> elements and their child elements, preventing HTML validation errors",
   "keywords": [
     "svg",
     "unique-id",
-    "validation"
+    "validation",
+    "html",
+    "web development",
+    "front-end",
+    "linting",
+    "code quality"
   ],
   "license": "MIT",
   "repository": {
@@ -21,7 +26,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:svg-cleaner.helloWorld",
     "onCommand:svg-cleaner.cleanSVGIds",
     "onLanguage:html",
     "onWorkspaceOpen"
@@ -29,10 +33,6 @@
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
-      {
-        "command": "svg-cleaner.helloWorld",
-        "title": "Hello World"
-      },
       {
         "command": "svg-cleaner.cleanSVGIds",
         "title": "Clean SVG IDs"
